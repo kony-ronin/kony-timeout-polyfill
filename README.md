@@ -21,4 +21,3 @@ it to. Therefore it just has to be declared as a global variable.
 any other javascript libraries that might be dependant setTimeout and clearTimeout
 being already defined.
 
-Author: Miguelangel Fernandez, miguelangel.fernandez@kony.com
