@@ -1,0 +1,28 @@
+{
+  "name": "kony-timeout-polyfill",
+  "version": "1.0.0",
+  "description": "A setTimeout and clearTimeout polyfill for the Kony platform.",
+  "main": "aaa_setTimeout.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kony-ronin/kony-timeout-polyfill.git"
+  },
+  "keywords": [
+    "kony",
+    "timer",
+    "polyfill",
+    "setTimeout",
+    "clearTimeout"
+  ],
+  "author": "Miguelangel Fernandez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kony-ronin/kony-timeout-polyfill/issues"
+  },
+  "homepage": "https://github.com/kony-ronin/kony-timeout-polyfill#readme",
+  "dependencies": {},
+  "devDependencies": {}
+}
