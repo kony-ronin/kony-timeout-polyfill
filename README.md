@@ -1,13 +1,23 @@
-# Timeouts polyfill for the Kony Platform
+# Timeouts Polyfill for the Kony Platform
 
-Defines the `setTimeout` and `clearTimeout` functions for non-browser
-environments -i.e. Native mobile. This helps the Kony platform play
-nice with other javascript modules that might depend on these function definitions —e.g. Promises polyfills and Kris Kowal's Q.
+Defines the `setTimeout`, `clearTimeout`, `setInterval` and `clearInterval`
+functions for non-browser environments -i.e. Native mobile. This allows for the
+use of third party libraries dependent on these functions in Visualizer native applications —e.g.
+[Q.js](https://github.com/kriskowal/q).
 
-## Implementation Notes:
+# How to Install
 
-1. Uses the `eval` function to avoid declaring the `setTimeout` or `clearTimeout` functions unless it's necessary. Declaring it and not initializing it will lead to breaking the natively defined namespace on browser environments, and the global `this` variable does not exist in native Kony apps.
+You can get these included in your Visualizer project by running
 
-2. Can't wrap in closure notation as there seems to be no global variable -equivalent to `window` or `self`- in non-browser environments, so there would be nothing to attach it to. Therefore it just has to be declared as a global variable.
+    npm install --prefix=modules kony-timeout-polyfill
 
-3. Prefix `aaa` to module name is important to try and force this to be loaded before any other javascript libraries that might be dependent `setTimeout` and `clearTimeout` being already defined.
+It's important to keep the `aaa` prefix in order to force these modules to be
+loaded before any other javascript libraries that might be dependent on
+`setTimeout`/`clearTimeout` or `setInterval`/`clearInterval` being defined.
+
+## Implementation Notes
+
+I use `eval` in order to avoid declaring the these functions unless they're
+undefined. The fact that in global native apps there's no global `this` variable
+and that in web apps they're already defined and I must avoid overwriting them,
+makes the use of `eval` necessary.

@@ -1,6 +1,6 @@
 {
   "name": "kony-timeout-polyfill",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A setTimeout and clearTimeout polyfill for the Kony platform.",
   "main": "aaa_setTimeout.js",
   "scripts": {
@@ -15,7 +15,9 @@
     "timer",
     "polyfill",
     "setTimeout",
-    "clearTimeout"
+    "clearTimeout",
+    "setInterval",
+    "clearInterval"
   ],
   "author": "Miguelangel Fernandez",
   "license": "MIT",
