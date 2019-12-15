@@ -33,14 +33,14 @@ var _setTimeout = (function(){ // eslint-disable-line no-unused-vars
 	};
 })();
 
-var _clearTimeout = function(timeoutId){
+var _clearTimeout = function(timeoutId){ // eslint-disable-line no-unused-vars
 	kony.timer.cancel(timeoutId);
-}
+};
 
 if(typeof window === "undefined" && typeof self === "undefined"){
-	eval("var setTimeout = _setTimeout");
-	eval("var clearTimeout = _clearTimeout");
-	kony.print("Had to monkeypatch setTimeout to: " + setTimeout);
+	eval("var setTimeout = _setTimeout"); // eslint-disable-line no-eval
+	eval("var clearTimeout = _clearTimeout"); // eslint-disable-line no-eval
+	kony.print("Defined setTimeout polyfill to: " + setTimeout);
 }
 else{
 	kony.print("setTimeout is natively supported as: " + setTimeout);
