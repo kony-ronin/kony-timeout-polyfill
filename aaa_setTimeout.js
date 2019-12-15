@@ -24,12 +24,13 @@
  *
  * @Author Miguelángel Fernández
  */
-var _setTimeout = (function(){
-	var timeoutId = 7000;
+
+var _setTimeout = (function(){ // eslint-disable-line no-unused-vars
+	var timeoutId = "timer_" + Date.now();
 	return function (fn, msDelay){
-		kony.timer.schedule(""+timeoutId, fn, msDelay/1000, false);
-		return timeoutId++;
-	}
+		kony.timer.schedule(timeoutId, fn, msDelay/1000, false);
+		return timeoutId;
+	};
 })();
 
 var _clearTimeout = function(timeoutId){
