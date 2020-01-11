@@ -24,15 +24,13 @@
  * @Author Miguelángel Fernández
  */
 
-var _setInterval = (function(){ // eslint-disable-line no-unused-vars
-	var intervalId = "interval_" + Date.now();
-	return function (fn, msDelay){ //TODO: Implement passing of additional parameters.
-		kony.timer.schedule(intervalId, fn, msDelay/1000, false);
-		return intervalId;
-	};
-})();
+const _setInterval = (fn, msDelay){ //TODO: Implement passing of additional parameters.
+	var intervalId = "interval_" + Date.now() + "_" + Math.random();
+	kony.timer.schedule(intervalId, fn, msDelay/1000, false);
+	return intervalId;
+};
 
-var _clearInterval = function(intervalId){ // eslint-disable-line no-unused-vars
+const _clearInterval = function(intervalId){ // eslint-disable-line no-unused-vars
 	kony.timer.cancel(intervalId);
 };
 

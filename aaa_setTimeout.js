@@ -24,23 +24,25 @@
  * @Author Miguelángel Fernández
  */
 
-var _setTimeout = (function(){ // eslint-disable-line no-unused-vars
-	var timeoutId = "timer_" + Date.now();
-	return function (fn, msDelay){ //TODO: Implement passing of additional parameters.
-		kony.timer.schedule(timeoutId, fn, msDelay/1000, false);
-		return timeoutId;
-	};
-})();
+const _setTimeout = (fn, msDelay) => {
+	var timerId = "timer_" + Date.now() + "_" + Math.random();
+	kony.timer.schedule(timerId, ()=>{
+		fn();
+		try{kony.timer.cancel(timerId);}
+		catch(e){}
+	}, msDelay/1000, false);
+	return timerId;
+};
 
-var _clearTimeout = function(timeoutId){ // eslint-disable-line no-unused-vars
-	kony.timer.cancel(timeoutId);
+const _clearTimeout = function(timerId){ // eslint-disable-line no-unused-vars
+	kony.timer.cancel(timerId);
 };
 
 if(typeof window === "undefined" && typeof self === "undefined"){
 	eval("var setTimeout = _setTimeout"); // eslint-disable-line no-eval
 	eval("var clearTimeout = _clearTimeout"); // eslint-disable-line no-eval
-	kony.print("Defined setTimeout polyfill to: " + setTimeout);
+	kony.print("Defined setTimeout polyfill to: " + setTimeout); // eslint-disable-line no-undef
 }
 else{
-	kony.print("setTimeout is natively supported as: " + setTimeout);
+	kony.print("setTimeout is natively supported as: " + setTimeout); // eslint-disable-line no-undef
 }
