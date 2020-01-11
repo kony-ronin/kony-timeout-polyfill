@@ -24,7 +24,8 @@
  * @Author Miguelángel Fernández
  */
 
-const _setTimeout = (fn, msDelay) => {
+const _setTimeout = (fn, msDelay) => {  //eslint-disable-line no-unused-vars
+	//TODO: Implement passing of additional parameters.
 	var timerId = "timer_" + Date.now() + "_" + Math.random();
 	kony.timer.schedule(timerId, ()=>{
 		fn();

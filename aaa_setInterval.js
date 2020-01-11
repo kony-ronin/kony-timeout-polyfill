@@ -1,5 +1,5 @@
 /************************************
- *        setTimout Polyfill        *
+ *        setInterval Polyfill        *
  * **********************************
  *
  * Description:
@@ -24,7 +24,8 @@
  * @Author Miguelángel Fernández
  */
 
-const _setInterval = (fn, msDelay){ //TODO: Implement passing of additional parameters.
+const _setInterval = (fn, msDelay){  //eslint-disable-line no-unused-vars
+	//TODO: Implement passing of additional parameters.
 	var intervalId = "interval_" + Date.now() + "_" + Math.random();
 	kony.timer.schedule(intervalId, fn, msDelay/1000, false);
 	return intervalId;
