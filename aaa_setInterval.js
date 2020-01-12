@@ -38,8 +38,8 @@ const _clearInterval = function(intervalId){ // eslint-disable-line no-unused-va
 if(typeof window === "undefined" && typeof self === "undefined"){
 	eval("var setInterval = _setInterval"); // eslint-disable-line no-eval
 	eval("var clearInterval = _clearInterval"); // eslint-disable-line no-eval
-	kony.print("Defined setInterval polyfill to: " + setInterval);
+	kony.print("Defined setInterval polyfill to: " + setInterval); // eslint-disable-line no-undef
 }
 else{
-	kony.print("setInterval is natively supported as: " + setInterval);
+	kony.print("setInterval is natively supported as: " + setInterval); // eslint-disable-line no-undef
 }
