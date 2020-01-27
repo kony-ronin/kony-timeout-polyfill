@@ -37,7 +37,7 @@ kony.timer.cancel2 = function(timerId){ // eslint-disable-line no-unused-vars
  * @param  {string} idPrefix The prefix that will be used to compose a unique identifier for the timer.
  * @return {string} The unique identifier of the newly created timer.
  */
-var kony.timer.schedule2 = (idPrefix, fn, delay, repeat) => {  //eslint-disable-line no-unused-vars
+kony.timer.schedule2 = (idPrefix, fn, delay, repeat) => {  //eslint-disable-line no-unused-vars
 	var timerId = idPrefix + "_" + Math.random();
 	kony.timer.schedule(timerId, () => {
 		fn();
