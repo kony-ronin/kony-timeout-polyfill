@@ -2,8 +2,14 @@
 
 Defines the `setTimeout`, `clearTimeout`, `setInterval` and `clearInterval`
 functions for non-browser environments -i.e. Native mobile. This allows for the
-use of third party libraries dependent on these functions in Visualizer native applications —e.g.
-[Q.js](https://github.com/kriskowal/q).
+use of third party libraries dependent on these functions in Visualizer native
+applications.
+
+It also defines `kony.timer.schedule2` and `kony.timer.cancel2` as safe versions
+of `kony.timer.schedule` and `kony.timer.cancel` respectively. These allow you
+to schedule a timer without having to provide a unique timer id, and cancelling
+a timer without having to worry about it actually existing or being already
+cancelled.
 
 # How to Install
 
