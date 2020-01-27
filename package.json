@@ -1,6 +1,6 @@
 {
   "name": "kony-timeout-polyfill",
-  "version": "2.0.0-rc2",
+  "version": "2.0.0-rc3",
   "description": "A setTimeout and clearTimeout polyfill for the Kony platform.",
   "main": "aaa_timers_polyfill.js",
   "scripts": {
