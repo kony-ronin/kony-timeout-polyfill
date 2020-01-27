@@ -41,7 +41,7 @@ kony.timer.schedule2 = (idPrefix, fn, delay, repeat) => {  //eslint-disable-line
 	var timerId = idPrefix + "_" + Math.random();
 	kony.timer.schedule(timerId, () => {
 		fn();
-		kony.timer.cancel2(timerId);
+		if(!repeat) kony.timer.cancel2(timerId);
 	}, delay, repeat);
 	return timerId;
 };
