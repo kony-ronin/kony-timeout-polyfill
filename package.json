@@ -1,7 +1,7 @@
 {
   "name": "kony-timeout-polyfill",
   "version": "2.0.0-rc3",
-  "description": "A setTimeout and clearTimeout polyfill for the Kony platform.",
+  "description": "A setTimeout, clearTimeout, setInterval, clearInterval polyfill for Kony Visualizer native apps.",
   "main": "aaa_timers_polyfill.js",
   "scripts": {
     "test": "cp aaa_timers_polyfill.js tests/ws/TimersPolyfill/modules/test.js && echo \"Now restart Visualizer or refresh the project.\"",
@@ -18,7 +18,10 @@
     "setTimeout",
     "clearTimeout",
     "setInterval",
-    "clearInterval"
+    "clearInterval",
+	"visualizer",
+	"quantum",
+	"temenos"
   ],
   "author": "Miguelangel Fernandez",
   "license": "MIT",
