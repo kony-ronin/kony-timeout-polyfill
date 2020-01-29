@@ -19,7 +19,7 @@
         0
     ],
     "_skin_": "s50b95cc4b924f42b854dbd21192e84b",
-    "_text_": "setTimeout",
+    "_text_": "setInterval",
     "_top_": {
         "type": "string",
         "value": "0dp"
@@ -37,13 +37,13 @@
     "contentalignment": 5,
     "displaytext": true,
     "focusskin": "s429263732af4d9883bdab56a3aac021",
-    "id": "setTimeoutButton",
+    "id": "setIntervalButton",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "a26b57beb4d94625bc421d8cc6fe41b8",
+    "kuid": "id2fff5854d048579bda8b8da4b7b5d6",
     "name": "kony.ui.Button",
-    "parent": "timeoutFlex",
+    "parent": "intervalFlex",
     "pf": "Home",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

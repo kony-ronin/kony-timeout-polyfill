@@ -30,7 +30,10 @@
     },
     "canUpdateUI": true,
     "children": [
-        "setTimeoutButton"
+        "DevTools",
+        "timeoutFlex",
+        "intervalFlex",
+        "noteRichText"
     ],
     "containerweight": 100,
     "controllerInfo": {

@@ -18,8 +18,12 @@
         0,
         0
     ],
+    "_right_": {
+        "type": "string",
+        "value": "2%"
+    },
     "_skin_": "s50b95cc4b924f42b854dbd21192e84b",
-    "_text_": "setTimeout",
+    "_text_": "clearInterval",
     "_top_": {
         "type": "string",
         "value": "0dp"
@@ -29,21 +33,17 @@
         "value": "30%"
     },
     "canUpdateUI": true,
-    "centerx": {
-        "type": "string",
-        "value": "50%"
-    },
     "containerweight": 100,
     "contentalignment": 5,
     "displaytext": true,
     "focusskin": "s429263732af4d9883bdab56a3aac021",
-    "id": "setTimeoutButton",
+    "id": "cancelIntervalButton",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "a26b57beb4d94625bc421d8cc6fe41b8",
+    "kuid": "b992db5dae524896ac16eabd555efde7",
     "name": "kony.ui.Button",
-    "parent": "timeoutFlex",
+    "parent": "intervalFlex",
     "pf": "Home",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
