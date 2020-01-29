@@ -4,7 +4,8 @@
   "description": "A setTimeout and clearTimeout polyfill for the Kony platform.",
   "main": "aaa_timers_polyfill.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cp aaa_timers_polyfill.js tests/ws/TimersPolyfill/modules/test.js && echo \"Now restart Visualizer or refresh the project.\"",
+	"harvest": "cp tests/ws/TimersPolyfill/modules/test.js aaa_timers_polyfill.js"
   },
   "repository": {
     "type": "git",

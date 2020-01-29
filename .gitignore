@@ -1,1 +1,2 @@
 /node_modules
+/tests/ws/TimersPolyfill/modules/test.js
