@@ -1,10 +1,9 @@
 /**************************************************
- *        setTimout & setInterval Polyfill        *
+ *        setTimeout & setInterval Polyfill       *
  * ************************************************
  *
- * Define safe versions of kony.timer.schedule and kony.timer.cancel which avoid
- * dealing with error handling logic, and enhance the global scope with
- * setTimeout, clearTimeout, setInterval and clearInterval.
+ * Enhance the global scope with setTimeout, clearTimeout, setInterval and
+ * clearInterval.
  *
  * Note : When used on its own, give this module prefix "aaa" to force this to
  * be loaded before any other javascript libraries that might be dependant on
@@ -12,82 +11,78 @@
  *
  * @Author Miguelángel Fernández
  */
+try{
+	if(typeof clearTimeout === "undefined"){
 
+		/**
+		 * clearTimeout - Defines a global clearTimeout function if none already exists.
+		 * This is useful for non-browser environments, so that native Android and iOS
+		 * applications can leverage third party javascript libraries that may depend
+		 * on this function.
+		 */
+		var clearTimeout = (timerId) => { // eslint-disable-line no-unused-vars
+			try{kony.timer.cancel(timerId);}
+			catch(e){kony.print(`timer ${timerId} did not exist or was already cancelled.`);}
+		};
+		kony.print("TimeroutPolyfill: Applied clearTimeout polyfill");
+	}
+	else{
+		kony.print("TimeroutPolyfill: clearTimeout is already defined");
+	}
 
-/**
- * kony.timer.cancel2 - Safely cancels a timer. It behaves just like kony.timer.cancel, but without
- * assuming the timer is scheduled. It does not throw errors if
- * the timer does not exist or has been cancelled already. This is useful if the
- * timer you mean to cancel may be cancelled from several places in your logic,
- * and you wish to avoid possible errors due to race conditions.
- *
- * @param  {string} timerId The unique identifier of a timer which may or may not exist.
- */
-kony.timer.cancel2 = function(timerId){ // eslint-disable-line no-unused-vars
-	try{kony.timer.cancel(timerId);}
-	catch(e){}
-};
+	if(typeof clearInterval === "undefined"){
+		/**
+		 * clearInterval - Defines a global clearInterval function if none already exists.
+		 * This is useful for non-browser environments, so that native Android and iOS
+		 * applications can leverage third party javascript libraries that may depend
+		 * on this function.
+		 */
+		var clearInterval = clearTimeout;
+		kony.print("TimeroutPolyfill: Applied clearInterval polyfill");
+	}
+	else{
+		kony.print("TimeroutPolyfill: clearInterval is already defined");
+	}
 
-/**
- * kony.timer.schedule2 - Safely schedule a timer. It behaves just like kony.timer.schedule but
- * instead of expecting a unique timerId, it just expects a prefix —which is
- * not required to be unique— and then appends a randomised suffix to it, thus
- * guaranteeing that the timer will always be created.
- *
- * @param  {string} idPrefix The prefix that will be used to compose a unique identifier for the timer.
- * @return {string} The unique identifier of the newly created timer.
- */
-kony.timer.schedule2 = (idPrefix, fn, delay, repeat) => {  //eslint-disable-line no-unused-vars
-	var timerId = idPrefix + "_" + Math.random();
-	kony.timer.schedule(timerId, () => {
-		fn();
-		if(!repeat) kony.timer.cancel2(timerId);
-	}, delay, repeat);
-	return timerId;
-};
+	if(typeof setTimeout === "undefined"){
 
-/**
- * setTimeout - Defines the setTimeout and clearTimeout functions for non-browser
- * environments -i.e. Native mobile. This helps the Kony platform play
- * nice with other javascript modules that might depend on these functions.
- *
- * Note: When used on its own, give this module prefix "aaa" to force this to be loaded before
- * any other javascript libraries that might be dependant setTimeout and clearTimeout
- * being already defined.
- */
-const _setTimeout = (fn, msDelay) => {  //eslint-disable-line no-unused-vars
-	//TODO: Implement passing of additional parameters.
-	return kony.timer.schedule2("timer_", fn, msDelay/1000, false);
-};
+		/**
+		 * setTimeout - Defines a global setTimeout function if none already exists.
+		 * This is useful for non-browser environments, so that native Android and iOS
+		 * applications can leverage third party javascript libraries that may depend
+		 * on this function.
+		 */
+		var setTimeout = (fn, msDelay) => {  //eslint-disable-line no-unused-vars
+			//TODO: Implement passing of additional parameters.
+			var timerId = "timeout_" + Math.random();
+			kony.timer.schedule(timerId, fn, msDelay/1000, false);
+			return timerId;
+		};
+		kony.print("TimeroutPolyfill: Applied setTimeout polyfill");
+	}
+	else{
+		kony.print("TimeroutPolyfill: setTimeout is already defined");
+	}
 
-if(typeof window === "undefined" && typeof self === "undefined"){
-	eval("var setTimeout = _setTimeout"); // eslint-disable-line no-eval
-	eval("var clearTimeout = kony.timer.cancel2"); // eslint-disable-line no-eval
-	kony.print("Defined setTimeout polyfill to: " + setTimeout); // eslint-disable-line no-undef
+	if(typeof setInterval === "undefined"){
+		/**
+		 * setInterval - Defines a global setInterval function if none already exists.
+		 * This is useful for non-browser environments, so that native Android and iOS
+		 * applications can leverage third party javascript libraries that may depend
+		 * on this function.
+		 */
+		var setInterval = (fn, msDelay) => {  //eslint-disable-line no-unused-vars
+			//TODO: Implement passing of additional parameters.
+			var timerId = "interval_" + Math.random();
+			kony.timer.schedule(timerId, fn, msDelay/1000, true);
+			return timerId;
+		};
+		kony.print("TimeroutPolyfill: Applied setInterval polyfill");
+	}
+	else{
+		kony.print("TimeroutPolyfill: setInterval is already defined");
+	}
 }
-else{
-	kony.print("setTimeout is natively supported as: " + setTimeout); // eslint-disable-line no-undef
-}
-
-/**
- * setInterval - Defines the setInterval and clearInterval functions for non-browser
- * environments -i.e. Native mobile. This helps the Kony platform play
- * nice with other javascript modules that might depend on these functions.
- *
- * Note: When used on its own, give this module prefix "aaa" to force this to be loaded before
- * any other javascript libraries that might be dependant setTimeout and clearTimeout
- * being already defined.
- */
-const _setInterval = (fn, msDelay) => {  //eslint-disable-line no-unused-vars
-	//TODO: Implement passing of additional parameters.
-	return kony.timer.schedule2("interval_", fn, msDelay/1000, true);
-};
-
-if(typeof window === "undefined" && typeof self === "undefined"){
-	eval("var setInterval = _setInterval"); // eslint-disable-line no-eval
-	eval("var clearInterval = kony.timer.cancel2"); // eslint-disable-line no-eval
-	kony.print("Defined setInterval polyfill to: " + setInterval); // eslint-disable-line no-undef
-}
-else{
-	kony.print("setInterval is natively supported as: " + setInterval); // eslint-disable-line no-undef
+catch(e){
+	alert("TimeroutPolyfill: " + e + "\n" + e.stack);
 }
