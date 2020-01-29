@@ -54,8 +54,13 @@ try{
 		 */
 		var setTimeout = (fn, msDelay) => {  //eslint-disable-line no-unused-vars
 			//TODO: Implement passing of additional parameters.
+
+			if(typeof fn !== "function"){
+				throw new Error("Arg fn in setTimeout must be a function");
+			}
+
 			var timerId = "timeout_" + Math.random();
-			kony.timer.schedule(timerId, fn, msDelay/1000, false);
+			kony.timer.schedule(timerId, fn, msDelay?parseInt(msDelay)/1000:0, false);
 			return timerId;
 		};
 		kony.print("TimeroutPolyfill: Applied setTimeout polyfill");
@@ -73,8 +78,13 @@ try{
 		 */
 		var setInterval = (fn, msDelay) => {  //eslint-disable-line no-unused-vars
 			//TODO: Implement passing of additional parameters.
+
+			if(typeof fn !== "function"){
+				throw new Error("Arg fn in setInterval must be a function");
+			}
+
 			var timerId = "interval_" + Math.random();
-			kony.timer.schedule(timerId, fn, msDelay/1000, true);
+			kony.timer.schedule(timerId, fn, msDelay?parseInt(msDelay)/1000:0, true);
 			return timerId;
 		};
 		kony.print("TimeroutPolyfill: Applied setInterval polyfill");
